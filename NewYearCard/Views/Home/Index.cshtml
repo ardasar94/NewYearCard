@@ -1,0 +1,50 @@
+﻿@model List<Card>
+@{
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>New Year Card</h1>
+    <p class="lead">Make wonderful new years cards for you friends and you family. To make it please sign in.</p>
+    <p><a href="@Url.Action("Index", "Cards")" class="btn btn-primary btn-lg">Add-Card &raquo;</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        @if (User.Identity.IsAuthenticated)
+        {
+            foreach (var item in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card text-center mb-3">
+                        <div class="card-header">
+                            <h5 class="card-title logo">@item.Title</h5>
+
+                        </div>
+
+
+                        <img width="250" src="@Url.Content($"~/images/{item.PhotoPath}.png")" class="card-img-bottom" alt="...">
+                        <div class="card-body p-0">
+                            <div class="d-flex justify-content-center bg-warning">
+                                <a target="_blank" class="mr-3 text-white" href="@Url.Content($"/Cards/Download/{item.Id}")"><i class="fas fa-download"></i></a>
+
+                                <a target="_blank" class="text-white" href="@Url.Content($"/Cards/Display/{item.Id}")"><i class="fas fa-search"></i></a>
+                            </div>
+                            <div class="icon-box-green">
+                                <a href="@Url.Content($"/cards/Edit/{item.Id}")"><i class="fas fa-pen-square"></i> Duzenle</a>
+                            </div>
+                            <div class="icon-box-red">
+                                <a href="@Url.Content($"/cards/Delete/{item.Id}")"><i class="fas fa-trash"></i> Sil</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <h1>Lütfen Kayıt olun</h1>
+        }
+    </div>
+</div>

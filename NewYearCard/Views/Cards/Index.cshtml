@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2 style="font-size:34px" class="text-center logo">Pick a picture for you card </h2>
+@using (Html.BeginForm("New", "Cards", FormMethod.Get))
+{
+    <div class="form-group">
+
+        <select name="PhotoPath" class="image-picker">
+            <option data-img-src="/images/1.png" data-img-class="first" data-img-alt="Page 1" value="1">  Page 1  </option>
+            <option data-img-src="/images/2.png" data-img-alt="Page 2" value="2">  Page 2  </option>
+            <option data-img-src="/images/3.png" data-img-alt="Page 3" value="3">  Page 3  </option>
+            <option data-img-src="/images/4.png" data-img-alt="Page 4" value="4">  Page 4  </option>
+            <option data-img-src="/images/5.png" data-img-alt="Page 5" value="5">  Page 5  </option>
+            <option data-img-src="/images/6.png" data-img-alt="Page 6" value="6">  Page 6  </option>
+            <option data-img-src="/images/7.png" data-img-alt="Page 7" value="7">  Page 7  </option>
+            <option data-img-src="/images/8.png" data-img-alt="Page 8" value="8">  Page 8  </option>
+            <option data-img-src="/images/9.png" data-img-alt="Page 9" value="9">  Page 9  </option>
+            <option data-img-src="/images/10.png" data-img-alt="Page 10" value="10"> Page 10 </option>
+            <option data-img-src="/images/11.png" data-img-alt="Page 11" value="11"> Page 11 </option>
+            <option data-img-src="/images/12.png" data-img-alt="Page 12" value="12"> Page 12 </option>
+            <option data-img-src="/images/13.png" data-img-alt="Page 13" value="13"> Page 13 </option>
+            <option data-img-src="/images/14.png" data-img-alt="Page 14" data-img-class="last" value="14"> Page 12 </option>
+        </select>
+    </div>
+    <button style="margin-left:45%" class="btn btn-danger btn-lg">Next</button>
+}

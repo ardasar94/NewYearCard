@@ -1,0 +1,79 @@
+﻿@model Card
+@{
+    ViewBag.Title = "Edit Card";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2 class="logo text-center">Kartını Düzenle</h2>
+
+@using (Html.BeginForm("Edit", "Cards", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken();
+    <p style="display:none" id="photoName">@Model.PhotoPath</p>
+
+    <div class="form-group">
+        @Html.LabelFor(m => m.PhotoPath, "Select Your Card : ")
+        <select id="selectPhoto" name="PhotoPath" class="image-picker">
+            <option data-img-src="/images/1.png" data-img-class="first" data-img-alt="Page 1" value="1">  Page 1  </option>
+            <option data-img-src="/images/2.png" data-img-alt="Page 2" value="2">  Page 2  </option>
+            <option data-img-src="/images/3.png" data-img-alt="Page 3" value="3">  Page 3  </option>
+            <option data-img-src="/images/4.png" data-img-alt="Page 4" value="4">  Page 4  </option>
+            <option data-img-src="/images/5.png" data-img-alt="Page 5" value="5">  Page 5  </option>
+            <option data-img-src="/images/6.png" data-img-alt="Page 6" value="6">  Page 6  </option>
+            <option data-img-src="/images/7.png" data-img-alt="Page 7" value="7">  Page 7  </option>
+            <option data-img-src="/images/8.png" data-img-alt="Page 8" value="8">  Page 8  </option>
+            <option data-img-src="/images/9.png" data-img-alt="Page 9" value="9">  Page 9  </option>
+            <option data-img-src="/images/10.png" data-img-alt="Page 10" value="10"> Page 10 </option>
+            <option data-img-src="/images/11.png" data-img-alt="Page 11" value="11"> Page 11 </option>
+            <option data-img-src="/images/12.png" data-img-alt="Page 12" value="12"> Page 12 </option>
+            <option data-img-src="/images/13.png" data-img-alt="Page 13" value="13"> Page 13 </option>
+            <option data-img-src="/images/14.png" data-img-alt="Page 14" data-img-class="last" value="14"> Page 12 </option>
+        </select>
+        @Html.ValidationMessageFor(m => m.PhotoPath)
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Title)
+        @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Title)
+
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.SenderName, "İsminiz :")
+                @Html.TextBoxFor(m => m.SenderName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.SenderName)
+
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.ReciverName, "Kime :")
+                @Html.TextBoxFor(m => m.ReciverName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.ReciverName)
+
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Message, "Mesajınız :")
+        @Html.TextAreaFor(m => m.Message, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Message)
+
+    </div>
+
+    <button style="margin-left: 46%" type="submit" class="btn btn-danger btn-lg">Save</button>
+
+
+}
+
+
+
+<script>
+    var paragraf = document.getElementById('resimAd');
+    var resimAd = paragraf.textContent;
+    var resimSec = document.getElementById('resimSec');
+    resimSec.value = resimAd;
+</script>
